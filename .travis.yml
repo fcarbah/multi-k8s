@@ -21,4 +21,4 @@ after_success:
 - docker push fcarbah/multi-client
 - docker push fcarbah/multi-nginx
 - docker push fcarbah/multi-server
-- docker push fcarbah/multi-worker
+- docker push fcarbah/multi-
