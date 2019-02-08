@@ -28,10 +28,10 @@ deploy:
   #all of these come from amazon aws elastic beanstalk
   provider: elasticbeanstalk
   region: "us-west-2"
-  app: "multi-docker"
-  env: "MultiDocker-env"
+  app: "multi-dockerapp"
+  env: "MultiDockerapp-env"
   bucket_name: "elasticbeanstalk-us-west-2-184721162578"
-  bucket_path: "multi-docker" #same as app
+  bucket_path: "multi-dockerapp" #same as app
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
