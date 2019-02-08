@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run fcarbah/react-test npm run test -- --coverage
+
+after_success:
+  - docker build -t fcarbah/multi-client ./client
+  - docker build -t fcarbah/multi-nginx ./nginx
+  - docker build -t fcarbah/multi-server ./server
+  - docker build -t fcarbah/multi-worker ./worker
+
+#login to docker cli in other to push images
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+#take these images and push them to docker hub
+- docker push fcarbah/multi-client
+- docker push fcarbah/multi-nginx
+- docker push fcarbah/multi-server
+- docker push fcarbah/multi-worker
