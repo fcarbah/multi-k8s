@@ -15,10 +15,10 @@ after_success:
   - docker build -t fcarbah/multi-worker ./worker
 
 #login to docker cli in other to push images
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 #take these images and push them to docker hub
-- docker push fcarbah/multi-client
-- docker push fcarbah/multi-nginx
-- docker push fcarbah/multi-server
-- docker push fcarbah/multi-
+  - docker push fcarbah/multi-client
+  - docker push fcarbah/multi-nginx
+  - docker push fcarbah/multi-server
+  - docker push fcarbah/multi-worker
