@@ -5,7 +5,7 @@
 			"name":"client",
 			"image":"fcarbah/multi-client",
 			"hostname":"client",
-			"essential":true,
+			"essential":false,
 			"memory":128
 		},
 		{
@@ -13,20 +13,22 @@
 			"image":"fcarbah/multi-server",
 			"hostname":"api",
 			"essential":false,
-			"memory":128
+			"memory":128,
+			"links":["postgres","redis"]
 		},
 		{
 			"name":"worker",
 			"image":"fcarbah/multi-worker",
 			"hostname":"worker",
 			"essential":false,
-			"memory":128
+			"memory":128,
+			"links":["redis"]
 		},
 		{
 			"name":"nginx",
 			"image":"fcarbah/multi-nginx",
 			"hostname":"nginx",
-			"essential":false,
+			"essential":true,
 			"memory":128,
 			"portMappings":[
 				{
@@ -35,6 +37,20 @@
 				}
 			],
 			"links":["client","server"]
+		},
+		{
+			"name":"postgres",
+			"image":"postgres:latest",
+			"hostname":"postgres",
+			"essential":false,
+			"memory":128,
+		},
+		{
+			"name":"redis",
+			"image":"redis:latest",
+			"hostname":"redis",
+			"essential":false,
+			"memory":128
 		}
 	]
 }
