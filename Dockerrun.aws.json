@@ -2,6 +2,20 @@
 	"AWSEBDockerrunVersion": 2,
 	"containerDefinitions":[
 		{
+			"name":"postgres",
+			"image":"postgres:11-alpine",
+			"hostname":"postgres",
+			"essential":false,
+			"memory":128
+		},
+		{
+			"name":"redis",
+			"image":"redis:5.0-alpine",
+			"hostname":"redis",
+			"essential":false,
+			"memory":128
+		},
+		{
 			"name":"client",
 			"image":"fcarbah/multi-client",
 			"hostname":"client",
@@ -37,20 +51,6 @@
 				}
 			],
 			"links":["client","server"]
-		},
-		{
-			"name":"postgres",
-			"image":"postgres:latest",
-			"hostname":"postgres",
-			"essential":false,
-			"memory":128
-		},
-		{
-			"name":"redis",
-			"image":"redis:latest",
-			"hostname":"redis",
-			"essential":false,
-			"memory":128
-		}
+		}		
 	]
 }
