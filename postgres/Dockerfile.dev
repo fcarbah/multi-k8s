@@ -1,0 +1,2 @@
+From postgres:latest
+Run echo "tcpip_socket=true" >> /var/lib/postgresql/data/postgresql.conf
