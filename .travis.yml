@@ -22,3 +22,18 @@ after_success:
   - docker push fcarbah/multi-nginx
   - docker push fcarbah/multi-server
   - docker push fcarbah/multi-worker
+
+#deploy to hosting -- we are using amazon elasticbeanstalk
+deploy:
+  #all of these come from amazon aws elastic beanstalk
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-west-2-184721162578"
+  bucket_path: "multi-docker" #same as app
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"

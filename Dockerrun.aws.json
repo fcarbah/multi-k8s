@@ -1,0 +1,36 @@
+{
+	"AWSEBDockerrunVersion": 2,
+	"ContainerDefinitions":[
+		{
+			"name":"client",
+			"image":"fcarbah/multi-client",
+			"hostname":"client",
+			"essential":false
+		},
+		{
+			"name":"server",
+			"image":"fcarbah/multi-server",
+			"hostname":"api",
+			"essential":false
+		},
+		{
+			"name":"worker",
+			"image":"fcarbah/multi-worker",
+			"hostname":"worker",
+			"essential":false
+		},
+		{
+			"name":"nginx",
+			"image":"fcarbah/multi-nginx",
+			"hostname":"nginx",
+			"essential":true,
+			"portMappings":[
+				{
+					"hostPort":80,
+					"containerPort":80
+				}
+			],
+			"links":["client","server"] 
+		}
+	]
+}
