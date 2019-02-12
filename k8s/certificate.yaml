@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: n3xtcut-com-tls
+spec:
+  secretName: n3xtcut-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: n3xtcut.com
+  dnsNames: 
+    - n3xtcut.com 
+    - www.n3xtcut.com 
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - n3xtcut.com
+          - www.n3xtcut.com
