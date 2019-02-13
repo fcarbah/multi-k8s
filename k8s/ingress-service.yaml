@@ -15,27 +15,27 @@ spec:
         secretName: n3xtcut-com
   rules:
     - host: n3xtcut.com
-        http:
-          paths:
-            - path: /api/(.+)
-              backend:
-                serviceName: server-cluster-ip-service
-                servicePort: 5000
-            - path: /(.*)
-              backend:
-                serviceName: client-cluster-ip-service
-                servicePort: 3000
+      http:
+        paths:
+          - path: /api/(.+)
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 5000
+          - path: /(.*)
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
     - host: www.n3xtcut.com
-        http:
-          paths:
-            - path: /api/(.+)
-              backend:
-                serviceName: server-cluster-ip-service
-                servicePort: 5000
-            - path: /(.*)
-              backend:
-                serviceName: client-cluster-ip-service
-                servicePort: 3000
+      http:
+        paths:
+          - path: /api/(.+)
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 5000
+          - path: /(.*)
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
 
     
           
