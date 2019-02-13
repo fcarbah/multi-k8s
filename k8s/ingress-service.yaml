@@ -5,17 +5,17 @@ metadata:
   annotations: 
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    #certmanager.k8s.io/cluster-issuer: 'letsencrypt-prod'
-    #nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    certmanager.k8s.io/cluster-issuer: 'letsencrypt-prod'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
 spec:
-  # tls:
-  #   - hosts:
-  #       - n3xtcut.com
-  #       - www.n3xtcut.com
-  #     secretName: n3xtcut-com
+  tls:
+    - hosts:
+        - n3xtcut.com
+        - www.n3xtcut.com
+      secretName: n3xtcut-com
   rules:
-    # - host: n3xtcut.com
-    - http:
+    - host: n3xtcut.com
+      http:
         paths:
           - path: /api/(.+)
             backend:
@@ -25,17 +25,17 @@ spec:
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 3000
-    # - host: www.n3xtcut.com
-    #   http:
-    #     paths:
-    #       - path: /api/(.+)
-    #         backend:
-    #           serviceName: server-cluster-ip-service
-    #           servicePort: 5000
-    #       - path: /(.*)
-    #         backend:
-    #           serviceName: client-cluster-ip-service
-    #           servicePort: 3000
+    - host: www.n3xtcut.com
+      http:
+        paths:
+          - path: /api/(.+)
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 5000
+          - path: /(.*)
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
 
     
           
