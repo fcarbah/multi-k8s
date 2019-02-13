@@ -12,7 +12,7 @@ spec:
     - hosts:
         - n3xtcut.com
         - www.n3xtcut.com
-        secretName: n3xtcut-com
+      secretName: n3xtcut-com
   rules:
     - host: n3xtcut.com
       http:
